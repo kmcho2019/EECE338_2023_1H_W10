@@ -1,3 +1,6 @@
+# Author: hyunsungkim (hyunsungkim@postech.ac.kr)
+# Last modified: 2021-03-09
+
 gpio: gpio.o helper.o
 	gcc -o prog.out gpio.o helper.o -lpigpio
 	rm -f *.o
@@ -45,6 +48,7 @@ helper.o: helper.c
 	gcc -c helper.c
 reset.o: reset.c
 	gcc -c reset.c
+
 
 clean:
 	rm -f *.o *.out
