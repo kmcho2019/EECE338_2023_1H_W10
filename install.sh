@@ -14,7 +14,7 @@ export python=python3
 export pip=pip3
 
 if [ $MODE == "--install" ]; then
-    #echo "install mode"
+    echo "install mode"
     sudo apt update
     sudo apt install python-setuptools python3-setuptools
 
@@ -26,8 +26,8 @@ if [ $MODE == "--install" ]; then
     make
     sudo make install
 
-if [ $MODE == '--debug' ]; then
-    #echo "debug mode"
+elif [ $MODE == '--debug' ]; then
+    echo "debug mode"
     cd /home/pi/pigpio-master
 
     gcc --version
@@ -51,3 +51,4 @@ else
     echo "./install.sh --install"
     echo "./install.sh --debug"
 fi
+
