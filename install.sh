@@ -13,7 +13,11 @@ fi
 export python=python3
 export pip=pip3
 
-if [ $MODE == "--install" ]; then
+if [ $# -ne 1 ]; then
+    echo "ERROR: Cannot resolve run mode. Run script must be either 'sudo ./install.sh --install' or 'sudo ./install.sh --debug'"
+    exit
+
+elif [ $MODE == "--install" ]; then
     echo "install mode"
     sudo apt update
     sudo apt install python-setuptools python3-setuptools
@@ -47,8 +51,5 @@ elif [ $MODE == '--debug' ]; then
 #    pip --version
 #    python debug.py
 
-else
-    echo "./install.sh --install"
-    echo "./install.sh --debug"
 fi
 
