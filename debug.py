@@ -7,7 +7,8 @@ import sys
 
 print("Python Version: {}".format(sys.version))
 
-pipmodules = ['numpy', 'scipy', 'matplotlib', 'pillow']  # List of python modules to be inspected
+#pipmodules = ['numpy', 'scipy', 'matplotlib', 'pillow']  # List of python modules to be inspected
+pipmodules = ['pigpio']
 for module in pipmodules:
     try:
         print("Inspecting module {}".format(module))

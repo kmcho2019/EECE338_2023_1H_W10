@@ -46,6 +46,7 @@ elif [ $MODE == '--debug' ]; then
     ./x_pipe        # check pipe   I/F to daemon
 
     gpio readall
+    sudo killall pigpio
 
 #    python --version
 #    pip --version
