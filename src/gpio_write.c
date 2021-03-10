@@ -6,6 +6,53 @@
 #define PIN_LEDG 20
 #define PIN_LEDB 21
 
+void switch_led_color(int led_state)
+{
+    switch(led_state) {
+        case 1:
+            gpioWrite(PIN_LEDR, PI_HIGH);
+            gpioWrite(PIN_LEDG, PI_LOW);
+            gpioWrite(PIN_LEDB, PI_LOW);
+            break; 
+        case 2:
+            gpioWrite(PIN_LEDR, PI_LOW);
+            gpioWrite(PIN_LEDG, PI_HIGH);
+            gpioWrite(PIN_LEDB, PI_LOW);
+            break;   
+        case 3:
+            gpioWrite(PIN_LEDR, PI_HIGH);
+            gpioWrite(PIN_LEDG, PI_HIGH);
+            gpioWrite(PIN_LEDB, PI_LOW);
+            break;
+        case 4:
+            gpioWrite(PIN_LEDR, PI_LOW);
+            gpioWrite(PIN_LEDG, PI_LOW);
+            gpioWrite(PIN_LEDB, PI_HIGH);
+            break;
+        case 5:
+            gpioWrite(PIN_LEDR, PI_HIGH);
+            gpioWrite(PIN_LEDG, PI_LOW);
+            gpioWrite(PIN_LEDB, PI_HIGH);
+            break;
+        case 6:
+            gpioWrite(PIN_LEDR, PI_LOW);
+            gpioWrite(PIN_LEDG, PI_HIGH);
+            gpioWrite(PIN_LEDB, PI_HIGH);
+            break;
+        case 7:
+            gpioWrite(PIN_LEDR, PI_HIGH);
+            gpioWrite(PIN_LEDG, PI_HIGH);
+            gpioWrite(PIN_LEDB, PI_HIGH);
+            break;
+        default:
+            gpioWrite(PIN_LEDR, PI_LOW);
+            gpioWrite(PIN_LEDG, PI_LOW);
+            gpioWrite(PIN_LEDB, PI_LOW);
+            break;
+    }
+}
+
+
 int main()
 {
     int led_state = 0;
@@ -27,48 +74,7 @@ int main()
     // Infinite loop
     while(1) {
         led_state = (led_state + 1) % 7 + 1;
-        switch(led_state) {
-            case 1:
-                gpioWrite(PIN_LEDR, PI_HIGH);
-                gpioWrite(PIN_LEDG, PI_LOW);
-                gpioWrite(PIN_LEDB, PI_LOW);
-                break; 
-            case 2:
-                gpioWrite(PIN_LEDR, PI_LOW);
-                gpioWrite(PIN_LEDG, PI_HIGH);
-                gpioWrite(PIN_LEDB, PI_LOW);
-                break;   
-            case 3:
-                gpioWrite(PIN_LEDR, PI_HIGH);
-                gpioWrite(PIN_LEDG, PI_HIGH);
-                gpioWrite(PIN_LEDB, PI_LOW);
-                break;
-            case 4:
-                gpioWrite(PIN_LEDR, PI_LOW);
-                gpioWrite(PIN_LEDG, PI_LOW);
-                gpioWrite(PIN_LEDB, PI_HIGH);
-                break;
-            case 5:
-                gpioWrite(PIN_LEDR, PI_HIGH);
-                gpioWrite(PIN_LEDG, PI_LOW);
-                gpioWrite(PIN_LEDB, PI_HIGH);
-                break;
-            case 6:
-                gpioWrite(PIN_LEDR, PI_LOW);
-                gpioWrite(PIN_LEDG, PI_HIGH);
-                gpioWrite(PIN_LEDB, PI_HIGH);
-                break;
-            case 7:
-                gpioWrite(PIN_LEDR, PI_HIGH);
-                gpioWrite(PIN_LEDG, PI_HIGH);
-                gpioWrite(PIN_LEDB, PI_HIGH);
-                break;
-            default:
-                gpioWrite(PIN_LEDR, PI_LOW);
-                gpioWrite(PIN_LEDG, PI_LOW);
-                gpioWrite(PIN_LEDB, PI_LOW);
-                break;
-        }
+        change_led_state(led_state);
         sleep_ms(500);
     }
 

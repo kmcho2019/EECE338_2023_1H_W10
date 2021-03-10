@@ -55,8 +55,8 @@ void gpioAnalogWrite(int pin, uint8_t level)
  */
 int gpioReadDebounce(int pin)
 {
-    static bool pin_state[40] = {0};
-    static unsigned long pin_toggle_time_ms[40] = {0};
+    static bool pin_state[40] = {1,};
+    static unsigned long pin_toggle_time_ms[40] = {0,};
     bool state_pre, state_cur;
     int i = 0;
     unsigned long interval, time_cur;

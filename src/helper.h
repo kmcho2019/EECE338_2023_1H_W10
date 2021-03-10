@@ -9,7 +9,8 @@
 
 #define PI_DEBOUNCE_ERROR -1
 #define PI_DEBOUNCE_UNSTABLE -2
-#define PI_DEBOUNCE_TIME_MS 100
+// Adjust PI_DEBOUNCE_TIME_MS to remove button noise.
+#define PI_DEBOUNCE_TIME_MS 300
 
 unsigned long millis(void);
 void sleep_ms(long ms);

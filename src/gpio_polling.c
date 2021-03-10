@@ -10,19 +10,25 @@
 #define PIN_SERVO 12
 
 // NEVER change SERVO_POS_MIN and SERVO_POS_MAX.
-// Changing two values may break your servo motor.
+// Changing the two values may break your servo motor.
 #define SERVO_POS_MIN 1000
 #define SERVO_POS_MAX 2000
 
-#define LOOP_PERIOD_MS 2000
+#define LOOP_PERIOD_MS 1000
+
+/* [P1] Write your function FROM here, if needed */
+
+/* [P1] Write your function UP TO here, if needed */
 
 int main()
 {
     unsigned long t_start_ms, t_elapsed_ms;
 
-    /* [P1] Write your variables FROM here*/
+    /* [P1] Write your variables FROM here */
 
-    /* [P1] Write your variables UP TO here*/
+    /* [P1] Write your variables UP TO here */
+
+    srand((unsigned int)time(NULL));
 
     // GPIO settings
     if(gpioInitialise()<0) {
@@ -44,22 +50,16 @@ int main()
     while(1) {
         t_start_ms = millis();
 
-        /*** [P1] Write your code FROM here ***/
-        // Set the servo position to SERVO_POS_MIN
+        /* [P1] Write your codes FROM here */
 
-        // Sleep for 1000 ms
-
-        // Set the servo position to SERVO_POS_MAX
-
-        // Sleep for 1000 ms
+        // Set the servo angle to a random position.
 
         // Read the button pin state
 
-        // If the button is pushed, change the led color.
-        // Note that the LED must not be turned off, and
-        // at least five colors should be chosen. 
+        // If the button is pushed, change the color of the LED. Be
+        // sure the LED color switches between five or more colors.
 
-        /*** [P1] Write your code UP TO here ***/
+        /* [P1] Write your codes UP TO here */
 
         t_elapsed_ms = millis() - t_start_ms;
         sleep_ms(LOOP_PERIOD_MS - t_elapsed_ms);

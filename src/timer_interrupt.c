@@ -11,6 +11,8 @@
 #define PIN_LEDB 21
 #define PIN_SERVO 12
 
+// NEVER change SERVO_POS_MIN and SERVO_POS_MAX.
+// Changing the two values may break your servo motor.
 #define SERVO_POS_MIN 1000
 #define SERVO_POS_MAX 2000
 
@@ -61,11 +63,15 @@ int main()
         t_start_ms = millis();
 
         if(g_led_on) {
+            // While the LED is turned on, switch the LED color if
+            // `g_led_color` is asserted in the ISR.
             if(g_led_color)
             {
                 g_led_color = false;
                 led_color = led_color % 7 + 1;
             }
+            // Setting LED color using bit-wise operators. Three LSBs of
+            // `led_color` represents the state of BGR, respectively.
             gpioWrite(PIN_LEDR, (led_color & 0x01) && 1);
             gpioWrite(PIN_LEDG, (led_color & 0x02) && 1);
             gpioWrite(PIN_LEDB, (led_color & 0x04) && 1);
