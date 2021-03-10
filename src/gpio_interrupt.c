@@ -28,9 +28,8 @@ void myISR()
     printf("Interrupt! Button state: %d\r\n", btn_state);
 
     /*** [P2] Write your code FROM here ***/
-    // If the button is pushed, change the led color.
-    // Note that the LED must not be turned off, and
-    // at least five colors should be chosen. 
+    // If the button is pushed, change the color of the LED. Be
+    // sure the LED color switches between five or more colors.
 
     /*** [P2] Write your code UP TO here ***/
 }
@@ -62,7 +61,7 @@ int main()
     while(1) {
         t_start_ms = millis();
 
-        /*** [P2] Delete all codes below, and write your code FROM here ***/
+        /*** [P2] Delete all codes in between and write your code FROM here ***/
         gpioServo(PIN_SERVO, 1000);
         sleep_ms(500);
 
