@@ -12,7 +12,7 @@
 
 #define SERVO_POS_MIN 1000
 #define SERVO_POS_MAX 2000
-#define LOOP_PERIOD_MS 2000
+#define LOOP_PERIOD_MS 1000
 
 /* [P2] Write your global variables FROM here*/
 volatile int btn_state;
@@ -37,6 +37,10 @@ void myISR()
 int main()
 {
     unsigned long t_start_ms, t_elapsed_ms;
+
+    /* [P2] Write your variables FROM here, if needed */
+
+    /* [P2] Write your variables UP TO here, if needed */
 
     // GPIO settings
     if(gpioInitialise()<0) {

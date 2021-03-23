@@ -90,6 +90,13 @@ void myISR_color()
     /*** [P4] Write your code UP TO here ***/
 }
 
+void myISR_servo()
+{
+    /* [P4] Write your code FROM here */
+
+    /* [P4] Write your code UP TO here */
+}
+
 void gpioRGBColor(int rIntensity, int gIntensity, int bIntensity)
 {
     gpioAnalogWrite(PIN_LEDR, rIntensity);

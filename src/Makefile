@@ -21,7 +21,7 @@ project: project.o helper.o
 	rm -f *.o
 
 reset: reset.o helper.o
-	gcc -o reset.out reset.o helper.o -lpigpio
+	gcc -o prog.out reset.o helper.o -lpigpio
 	rm -f *.o 
 
 gpio_write: gpio_write.c
