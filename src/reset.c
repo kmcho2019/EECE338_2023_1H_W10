@@ -30,5 +30,7 @@ int main()
     gpioWrite(PIN_LEDG, PI_LOW);
     gpioWrite(PIN_LEDB, PI_LOW);
 
+    gpioTerminate();
+
     return 1;
 }
