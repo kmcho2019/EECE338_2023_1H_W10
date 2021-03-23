@@ -12,8 +12,14 @@ int main()
     int led_state = 0;
     // GPIO settings
     if(gpioInitialise()<0) {
-        printf("Cannot initialize GPIOs\r\n");
-        return 1;
+        printf("Retrying GPIO initialization");
+        gpioTerminate();
+
+        if(gpioInitialise()<0) {
+            printf("Cannot initialize GPIOs\r\n");
+            return 1;
+        }
+        printf("Successfully initialized GPIOs");
     }
 
     gpioSetMode(PIN_LEDR, PI_OUTPUT);
