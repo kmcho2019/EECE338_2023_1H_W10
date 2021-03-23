@@ -24,7 +24,10 @@
 volatile uint8_t rIntensity = 255;
 volatile uint8_t gIntensity = 0;
 volatile uint8_t bIntensity = 125;
-volatile uint8_t rDelta = -5, gDelta = 5, bDelta = -5;
+volatile int8_t rDelta = -5, gDelta = 5, bDelta = -5;
+
+volatile uint16_t servo_angle = SERVO_POS_MIN;
+volatile int8_t sDelta = 10;
 
 volatile int mode = MODE_MOOD;
 volatile int btn_state;
@@ -50,6 +53,10 @@ void myISR_fade()
             gDelta *= -1;
         if (bIntensity >= 255 || bIntensity <= 0)
             bDelta *= -1;
+
+        servo_angle = servo_angle + sDelta;
+        if (servo_angle >= SERVO_POS_MAX || servo_angle <= SERVO_POS_MIN)
+            sDelta *= -1;
     }
     else
         g_led_fade = false;
@@ -83,6 +90,13 @@ void myISR_color()
     /*** [P4] Write your code UP TO here ***/
 }
 
+void gpioRGBColor(int rIntensity, int gIntensity, int bIntensity)
+{
+    gpioAnalogWrite(PIN_LEDR, rIntensity);
+    gpioAnalogWrite(PIN_LEDG, gIntensity);
+    gpioAnalogWrite(PIN_LEDB, bIntensity);
+}
+
 int main()
 {
     unsigned long t_start_ms, t_elapsed_ms;
@@ -102,6 +116,7 @@ int main()
     gpioSetMode(PIN_LEDR, PI_OUTPUT);
     gpioSetMode(PIN_LEDG, PI_OUTPUT);
     gpioSetMode(PIN_LEDB, PI_OUTPUT);
+    gpioSetMode(PIN_SERVO, PI_OUTPUT);
     gpioSetMode(PIN_BTN, PI_INPUT);
 
     gpioSetPullUpDown(PIN_BTN, PI_PUD_UP);
@@ -121,9 +136,7 @@ int main()
         /* [P4] Write your code FROM here */
         if(1)  // Modify properly
         {
-            gpioAnalogWrite(PIN_LEDR, rIntensity);
-            gpioAnalogWrite(PIN_LEDG, gIntensity);
-            gpioAnalogWrite(PIN_LEDB, bIntensity);
+            gpioRGBColor(rIntensity, gIntensity, bIntensity);
         }
         /* [P4] Write your code UP TO here */
 
