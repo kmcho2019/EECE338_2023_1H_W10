@@ -74,7 +74,7 @@ int main()
     // Infinite loop
     while(1) {
         led_state = (led_state + 1) % 7 + 1;
-        change_led_state(led_state);
+        switch_led_color(led_state);
         sleep_ms(500);
     }
 
