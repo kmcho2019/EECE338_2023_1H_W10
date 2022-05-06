@@ -6,4 +6,4 @@
 
 12th Weekly project of EECE338/374 class held in 2022 Spring
 
-Jaeseung Lee (jae2seung@postech.ac.kr)
+## TA : Jaeseung Lee (jae2seung@postech.ac.kr)
